@@ -1,0 +1,82 @@
+PODS:
+  - Capacitor (5.7.8):
+    - CapacitorCordova
+  - CapacitorApp (5.0.0):
+    - Capacitor
+  - CapacitorCamera (5.0.0):
+    - Capacitor
+  - CapacitorCordova (5.7.8)
+  - CapacitorDevice (5.0.0):
+    - Capacitor
+  - CapacitorFilesystem (5.0.0):
+    - Capacitor
+  - CapacitorHaptics (5.0.0):
+    - Capacitor
+  - CapacitorKeyboard (5.0.0):
+    - Capacitor
+  - CapacitorNetwork (5.0.0):
+    - Capacitor
+  - CapacitorPushNotifications (5.0.0):
+    - Capacitor
+  - CapacitorStatusBar (5.0.0):
+    - Capacitor
+  - CordovaPlugins (5.0.0):
+    - CapacitorCordova
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
+  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
+  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorNetwork (from `../../node_modules/@capacitor/network`)"
+  - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
+  - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
+  - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorCamera:
+    :path: "../../node_modules/@capacitor/camera"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorDevice:
+    :path: "../../node_modules/@capacitor/device"
+  CapacitorFilesystem:
+    :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorHaptics:
+    :path: "../../node_modules/@capacitor/haptics"
+  CapacitorKeyboard:
+    :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorNetwork:
+    :path: "../../node_modules/@capacitor/network"
+  CapacitorPushNotifications:
+    :path: "../../node_modules/@capacitor/push-notifications"
+  CapacitorStatusBar:
+    :path: "../../node_modules/@capacitor/status-bar"
+  CordovaPlugins:
+    :path: "../capacitor-cordova-ios-plugins"
+
+SPEC CHECKSUMS:
+  Capacitor: 747aadb4fa786f460d8cd9d0557cb81440a13747
+  CapacitorApp: 16e189e0463976060ccf34868e3083858c977e2b
+  CapacitorCamera: 347de0404ad65462cd348d1e62419e8f763c38ae
+  CapacitorCordova: 31ab98dca2ddcee051027a1afe7e8c85c82f7297
+  CapacitorDevice: 035c9bb0e7f24d1012bb5b98138196dad4127266
+  CapacitorFilesystem: 095d81a2c46a4c614cf619b15fe3982f24b640b3
+  CapacitorHaptics: a7d1a6be8d84bcb2749bad57230a8b9e8cdcef7c
+  CapacitorKeyboard: 8a25a4241b74f69d457a7e81220a54c22214a679
+  CapacitorNetwork: 4ea79dd31b0a2032153aad52a8c0a3b68e42c9c1
+  CapacitorPushNotifications: c5581fea5f91dbbb208f707795149cfe2b10dc14
+  CapacitorStatusBar: 7ff77f2b22a52a93a140d1b2dede027bfb7d705f
+  CordovaPlugins: 6e819d8b5e25c25fe10380e8df7d369264ad60ea
+
+PODFILE CHECKSUM: 025380ad23435730066a07b35af52955be896917
+
+COCOAPODS: 1.16.2
