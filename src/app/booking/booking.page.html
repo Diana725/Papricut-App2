@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Booking Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner> -->
+
+  <ion-card color="tertiary" class="card-with-counter">
+  <ion-card-content>
+    <p class="p-list"><strong>Event Date:</strong> {{item.eventDate}}</p>
+    <p class="p-list"><strong>Shoot Nature:</strong> {{item.shoot_nature}}</p>
+    <p class="p-list"><strong>Location:</strong> {{item.location}}</p>
+    <ion-badge class="counter-badge" color="light">{{item.bookingProgress}}</ion-badge>
+  </ion-card-content>
+  </ion-card>
+
+  <hr>
+
+  <p><strong>Client:</strong> {{item.client_name}}</p>
+  <p><strong>Photographer</strong> {{item.photographer}}</p>
+
+  <p *ngIf="item.services.length > 0"><strong>Services</strong></p>
+  <div *ngIf="item.services.length > 0">
+  <ion-label *ngFor="let service of item.services">{{service}}</ion-label>
+  </div>
+
+  <p><strong>Details</strong></p>
+  <p>{{item.details}} {{item.details_more}}</p>
+
+  <ion-item *ngIf="item.styleGuide != null" (click)="styleGuide()">
+    <div class="main-list">
+      <div>
+        <p class="p-list">View Style Guide</p>
+      </div>
+    </div>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+  <ion-item *ngIf="item.invoice != null" (click)="invoice()">
+    <div class="main-list">
+      <div>
+        <p class="p-list">View Invoice</p>
+      </div>
+    </div>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+</ion-content>

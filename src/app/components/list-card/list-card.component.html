@@ -1,0 +1,61 @@
+<div class="main_content_div">
+
+    <div class="content_div">
+
+        <div class="card_div">
+            <!-- <div class="user_detail">
+              <div class="user_flex">
+                  <div class="user_back" (click)="openUser($event,item)" [style.backgroundImage]="'url('+ item.postedByDetails.profilePic +')'"></div>
+              </div>
+                <div class="user_detail_info">
+                    <ion-label class="bold_lbl" (click)="openUser($event,item)">{{item.postedByDetails.firstName}} {{item.postedByDetails.lastName}} . <ion-note>{{item.timeAgo}}</ion-note></ion-label>
+                  <ion-label>
+                    <p>
+                      <ion-badge color="secondary" *ngIf="item.type != 'rating'">
+                        <ion-icon name="star" color="primary" *ngIf="item.isBoosted > 0"></ion-icon>
+                        {{item.typeLabel}}
+                        <span *ngIf="item.type == 'forum'">- {{item.forumCountMembers}} Member(s)</span>
+                      </ion-badge>
+                    </p>
+                <p *ngIf="item.type == 'rating'">
+                  <ion-badge color="dark" *ngIf="item.categoryName != null">{{item.categoryName}}</ion-badge>
+                </p>
+                <p *ngIf="item.type == 'rating'">
+                  <ion-badge color="dark" *ngIf="item.categoryName != null">Avg. {{item.typeLabel}}
+                     {{item.averageRating}} of {{item.countRatings}}</ion-badge>
+                </p>
+              </ion-label>
+
+                </div>
+                <div class="abs_div">
+                    <ion-icon name="ellipsis-vertical" (click)="cardOptions($event,item)"></ion-icon>
+                </div>
+            </div> -->
+
+            <div class="user_text">
+              <ion-note>{{item.timeAgo}}</ion-note>
+              <p class="description-text" text-wrap>{{item.question}}</p>
+                <div class="comments_counter">
+                    <div class="inner_flex" (click)="comments($event,item)">
+                      <ion-icon name="chatbox-outline" class="icon-item"></ion-icon>
+                        <ion-label>{{ item.commentsCount }}</ion-label>
+                    </div>
+                    <div class="inner_flex" (click)="editPost(item)">
+                      <ion-icon name="pencil-outline" class="icon-item"></ion-icon>
+                      <!-- <ion-label>Edit</ion-label> -->
+                    </div>
+                    <div class="inner_flex" (click)="deleteThis(item)">
+                      <ion-icon name="trash-outline" class="icon-item"></ion-icon>
+                      <!-- <ion-label>{{ item.countShared }}</ion-label> -->
+                    </div>
+                    <!-- <div class="inner_flex">
+                        <ion-label style="float:right;">{{item.timeAgo}}</ion-label>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,116 @@
+.auto-resize-textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+
+ion-content {
+    // --background: #fff url('../../assets/imgs/6.jpg') no-repeat center center / cover;
+}
+.main_content_div {
+    // width: 100%;
+    // padding: 8px;
+
+    ion-label {
+        display: block;
+    }
+
+    .header_flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // margin-top: 40px;
+        margin-bottom: 20px;
+
+        ion-button {
+            margin: 0px;
+            color: var(--ion-color-dark);
+        }
+    }
+
+    .bold_lbl {
+        font-size: 26px;
+        text-align: center;
+        color: var(--ion-color-dark);
+    }
+
+    .small_lbl {
+        text-align: center;
+        color: var(--ion-color-dark);
+        font-size: 14px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+
+    // ion-input, ion-select {
+    //     border-radius: 5px;
+    //     margin-bottom: 20px;
+    //     height: 50px;
+    //     --padding-start: 8px;
+    //     color: var(--ion-color-dark);
+    //
+    //     ion-icon {
+    //         margin-left: 10px;
+    //         color: var(--ion-color-dark);
+    //     }
+    // }
+
+    ion-button {
+        margin: 0px;
+        --border-radius: 5px;
+        height: 50px;
+        // margin-bottom: 40px;
+    }
+
+    .forgot_lbl {
+        color: var(--ion-color-dark);
+        font-size: 14px;
+        text-align: center;
+    }
+
+    // .abs_lbl {
+    //     position: absolute;
+    //     bottom: 40px;
+    //     color: var(--ion-color-dark);
+    //     font-size: 14px;
+    //     text-align: center;
+    //     left: 50%;
+    //     transform: translate(-50%);
+    //     width: 100%;
+    // }
+}
+
+ion-grid {
+  --ion-grid-padding: 0;
+}
+
+ion-row {
+  --ion-row-padding-start: 0;
+  --ion-row-padding-end: 0;
+}
+
+ion-col {
+  --ion-col-padding: 0;
+}
+
+.array-img {
+  width:100% !important;
+  height:15vh !important;
+  border-radius:6px !important;
+  border:1px solid #ccc;
+}
+
+.upload-img-top {
+    position: absolute;
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    // transform: translate(-50%,-50%);
+    // transform: translate3d(-50%,-50%,0);
+    text-align: center;
+    ion-icon {
+        line-height: inherit;
+        font-size: 10vw;
+        color: var(--ion-color-dark);
+    }
+}

@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-buttons slot="start">
+        <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons> -->
+    <ion-title>
+      Papricut
+    </ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="..fetching">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item *ngIf="rights_group == '3' && isSuper == '0'">
+      <div class="main-list">
+        <div>
+          <p class="p-list">Hello! Inquire on how to get your SUPER Photographer Badge.</p>
+        </div>
+      </div>
+      <!-- <ion-icon slot="end" name="chevron-forward-outline"></ion-icon> -->
+    </ion-item>
+
+    <div *ngIf="rights_group == '4'">
+      <ion-item (click)="bookNow()">
+        <div class="main-list">
+          <div>
+            <h5 class="h2-list">Book Photographer</h5>
+            <p class="p-list">Anywhere around the world!</p>
+          </div>
+        </div>
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </div>
+
+<div *ngIf="rights_group == '3' || rights_group == '4'">
+  <ion-card color="medium" class="card-with-counter" (click)="openBookings(1)">
+  <ion-card-header>
+    <ion-card-title>Active Shoots</ion-card-title>
+    <ion-card-subtitle>Updated today!</ion-card-subtitle>
+    <ion-badge class="counter-badge">{{ongoing}}</ion-badge> <!-- Counter badge -->
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card color="tertiary" class="card-with-counter" (click)="openBookings(6)">
+  <ion-card-header>
+    <ion-card-title>Shoot Content Delivered</ion-card-title>
+    <ion-card-subtitle>Pending Approval</ion-card-subtitle>
+    <ion-badge class="counter-badge">{{delivered}}</ion-badge> <!-- Counter badge -->
+  </ion-card-header>
+  <ion-card-content>
+    Updated today!
+  </ion-card-content>
+  </ion-card>
+
+  <ion-card color="dark" class="card-with-counter" (click)="openBookings(3)">
+  <ion-card-header>
+    <ion-card-title>Shoot Fully Completed</ion-card-title>
+    <ion-card-subtitle>Updated today!</ion-card-subtitle>
+    <ion-badge class="counter-badge">{{completed}}</ion-badge> <!-- Counter badge -->
+  </ion-card-header>
+  </ion-card>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <app-bottomtabs [pageName]="pageName"></app-bottomtabs>
+</ion-footer>

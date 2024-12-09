@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Comments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="..fetching">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form (submit)="postComment()">
+
+  <ion-textarea
+    (input)="adjustTextarea($event)"
+    class="auto-resize-textarea mt-2"
+    placeholder="Enter your comment"
+    fill="outline"
+    rows="2"
+    name="comment"
+    [(ngModel)]="PostData.comment"
+    [disabled]="hasClick">
+  </ion-textarea>
+
+  <ion-button class="mt-4" mode="ios" type="submit" expand="block" color="primary" *ngIf="!hasClick">Post</ion-button>
+  <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+
+  </form>
+
+  <hr>
+
+  <ion-card *ngIf="nodataavailable" color="secondary">
+    <ion-card-content>
+      There are no comments to display!
+    </ion-card-content>
+    </ion-card>
+
+    <div class="main_content_div">
+
+        <div class="content_div">
+
+            <div *ngFor="let item of list" class="card_div">
+                <!-- <div class="user_detail">
+                  <div class="user_flex">
+                      <div class="user_back" (click)="openUser($event,item)" [style.backgroundImage]="'url('+ item.postedByDetails.profilePic +')'"></div>
+                  </div>
+                    <div class="user_detail_info">
+                        <ion-label class="bold_lbl" (click)="openUser($event,item)">{{item.postedByDetails.firstName}} {{item.postedByDetails.lastName}} . <ion-note>{{item.timeAgo}}</ion-note></ion-label>
+                      <ion-label>
+                        <p>
+                          <ion-badge color="secondary" *ngIf="item.type != 'rating'">
+                            <ion-icon name="star" color="primary" *ngIf="item.isBoosted > 0"></ion-icon>
+                            {{item.typeLabel}}
+                            <span *ngIf="item.type == 'forum'">- {{item.forumCountMembers}} Member(s)</span>
+                          </ion-badge>
+                        </p>
+                    <p *ngIf="item.type == 'rating'">
+                      <ion-badge color="dark" *ngIf="item.categoryName != null">{{item.categoryName}}</ion-badge>
+                    </p>
+                    <p *ngIf="item.type == 'rating'">
+                      <ion-badge color="dark" *ngIf="item.categoryName != null">Avg. {{item.typeLabel}}
+                         {{item.averageRating}} of {{item.countRatings}}</ion-badge>
+                    </p>
+                  </ion-label>
+
+                    </div>
+                    <div class="abs_div">
+                        <ion-icon name="ellipsis-vertical" (click)="cardOptions($event,item)"></ion-icon>
+                    </div>
+                </div> -->
+
+                <div class="user_text">
+                  <ion-note>{{item.timeAgo}}</ion-note>
+                  <p class="description-text" text-wrap>{{item.comment}}</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Infinite Scroll -->
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more comments..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Filter Bookings</ion-title>
+    <ion-buttons slot="end" class="mr-icon">
+        <ion-icon name="close-circle" color="light" (click)="dismiss()" class="top-right-icon"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+  <ion-select label="Year" label-placement="floating" fill="outline" [(ngModel)]="PostData.year"  name="year" class="myCustomSelect mt-4" interface="action-sheet" [disabled]="hasClick">
+    <ion-select-option *ngFor="let year of years" value="{{year}}">{{year}}</ion-select-option>
+  </ion-select>
+
+  <ion-select label="Country" label-placement="floating" fill="outline" [(ngModel)]="PostData.country_id"  name="country_id" (ionChange)="countryEvent($event)" class="myCustomSelect mt-4" interface="action-sheet" [disabled]="hasClick">
+    <ion-select-option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</ion-select-option>
+  </ion-select>
+
+    <ion-select label="City" label-placement="floating" fill="outline" [(ngModel)]="PostData.city_id"  name="city_id" class="myCustomSelect mt-4" interface="action-sheet" [disabled]="hasClick">
+      <ion-select-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+    </ion-select>
+
+</ion-content>
+<ion-footer no-border>
+  <ion-button mode="ios" expand="block" color="primary" (click)="submit()" class="submit-btn">Apply</ion-button>
+</ion-footer>

@@ -1,0 +1,120 @@
+.auto-resize-textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+.main_content_div {
+
+  ion-label {
+      display: block;
+  }
+
+  .user_flex {
+      display: flex;
+      margin-bottom: 20px;
+
+      .user_back {
+          height: 45px;
+          width: 45px;
+          min-width: 45px;
+          border-radius: 50%;
+          background-position: top;
+          background-size: cover;
+          background-repeat: no-repeat;
+          margin-right: 10px;
+      }
+  }
+
+  .text_slider {
+      display: flex;
+      margin-bottom: 20px;
+      overflow: scroll;
+      margin-bottom: 16px;
+
+      ion-label {
+          font-size: 18px;
+          font-family: 'semi-bold';
+          margin-right: 16px;
+          color: grey;
+      }
+
+      .active {
+          color: var(--ion-color-primary);
+      }
+  }
+
+  .content_div {
+      // padding: 16px;
+
+      .card_div {
+          border-bottom: 1px solid lightgrey;
+          padding-bottom: 16px;
+          margin-bottom: 16px;
+          .user_detail {
+              display: flex;
+              // margin-bottom: 10px;
+              .user_back {
+                  height: 40px;
+                  width: 40px;
+                  min-width: 40px;
+                  border-radius: 50%;
+                  background-position: top;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+              }
+
+              .user_detail_info {
+                  // padding-left: 10px;
+                  .bold_lbl {
+                      font-family: 'semi-bold';
+                      font-size: 15px;
+                  }
+                  .grey_lbl {
+                      color: grey;
+                      font-size: 13px;
+                  }
+              }
+              .abs_div {
+                  display: flex;
+                  align-items: center;
+                  position: absolute;
+                  right: 16px;
+
+                  ion-icon {
+                      color: var(--ion-color-dark);
+                  }
+
+                  ion-label {
+                      margin-left: 7px;
+                  }
+              }
+          }
+
+          .user_text {
+              // margin-left: 48px;
+              // margin-top: -16px;
+
+              .comments_counter {
+                  display: flex;
+                  margin-top: 5px;
+
+                  .inner_flex{
+                      display: flex;
+                      align-items: center;
+                      margin-right: 16px;
+
+                      ion-icon {
+                          margin-right: 10px;
+                      }
+
+                      ion-label {
+                          font-size: 14px;
+                          color: grey;
+                          margin-left: -20% !important;
+                      }
+                  }
+              }
+          }
+      }
+  }
+}

@@ -1,0 +1,337 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Book a Videographer</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="step-progress">
+      <!-- Step Progress Indicator -->
+      <div class="step-indicator" [ngClass]="{ 'active': currentStep === 1 }" (click)="openTab(1)"><span class="step-indicator-text">1</span></div>
+      <div class="step-line"></div>
+      <div class="step-indicator" [ngClass]="{ 'active': currentStep === 2 }" (click)="openTab(2)"><span class="step-indicator-text">2</span></div>
+      <div class="step-line"></div>
+      <div class="step-indicator" [ngClass]="{ 'active': currentStep === 3 }" (click)="openTab(3)"><span class="step-indicator-text">3</span></div>
+      <div class="step-line"></div>
+      <div class="step-indicator" [ngClass]="{ 'active': currentStep === 4 }" (click)="openTab(4)"><span class="step-indicator-text">4</span></div>
+      <div class="step-line"></div>
+      <div class="step-indicator" [ngClass]="{ 'active': currentStep === 5 }" (click)="openTab(5)"><span class="step-indicator-text">5</span></div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+<ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+<!-- <p><strong>Book a videographer anywhere in the world</strong></p> -->
+
+<!-- <ion-row>
+    <ion-label>Phone Number:</ion-label>
+    <ion-input type="tel" [(ngModel)]="PostData.phone_number" (ionInput)="parsePhoneNumber()">
+      <div slot="label">
+        <ion-select [(ngModel)]="countryCode" interface="popover"
+        [interfaceOptions]="{cssClass: 'country-codes'}">
+          <ion-select-option *ngFor="let phoneNumber of phoneNumbers" [value]="phoneNumber.country">
+            {{phoneNumber.text}}
+          </ion-select-option>
+        </ion-select>
+      </div>
+    </ion-input>
+  </ion-row> -->
+
+
+<div *ngIf="currentStep === 1">
+  <p class="page-label">I need to book a crew with the below core skills:</p>
+  <ion-row *ngFor="let option of skills">
+    <ion-col size="1" no-padding>
+      <ion-checkbox [(ngModel)]="option.selected" (ionChange)="updateCrewCoreSkillSelection(option)"></ion-checkbox>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      {{ option.label }}
+    </ion-col>
+  </ion-row>
+
+  <p class="page-label">Should the crew have their own equipment:</p>
+  <ion-radio-group [(ngModel)]="equipment">
+  <ion-row>
+    <ion-col size="1" no-padding>
+      <ion-radio mode="md" value="Yes, crew should bring their own equipment"></ion-radio>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      Yes, crew should bring their own equipment
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="1" no-padding>
+      <ion-radio mode="md" value="No, I will provide crew with equipment"></ion-radio>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      No, I will provide crew with equipment
+    </ion-col>
+  </ion-row>
+</ion-radio-group>
+
+  <!-- <ion-button color="primary" (click)="goToNextStep()">Next</ion-button> -->
+</div>
+
+
+
+
+
+<div *ngIf="currentStep === 2">
+  <p class="page-label">The nature of the shoot will be:</p>
+  <ion-row *ngFor="let option of nature">
+    <ion-col size="1" no-padding>
+      <ion-checkbox [(ngModel)]="option.selected" (ionChange)="updateNatureOfShootSelection(option)"></ion-checkbox>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      {{ option.label }}
+    </ion-col>
+  </ion-row>
+  <p class="page-label">Number of filming locations:</p>
+  <ion-radio-group [(ngModel)]="filmingLocations">
+  <ion-row>
+    <ion-col size="1" no-padding>
+      <ion-radio mode="md" value="One filming location"></ion-radio>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      One filming location
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="1" no-padding>
+      <ion-radio mode="md" value="Two filming locations"></ion-radio>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      Two filming locations
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="1" no-padding>
+      <ion-radio mode="md" value="2-10 filming locations"></ion-radio>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      2-10 filming locations
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="1" no-padding>
+      <ion-radio mode="md" value="More than 10 filming locations"></ion-radio>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      More than 10 filming locations
+    </ion-col>
+  </ion-row>
+</ion-radio-group>
+  <!-- <ion-button color="primary" (click)="goToPreviousStep()">Previous</ion-button>
+  <ion-button color="primary" (click)="goToNextStep()">Next</ion-button> -->
+</div>
+
+
+
+
+
+
+<div *ngIf="currentStep === 3">
+  <p class="page-label">Primary filming location:</p>
+  <p class="page-label">Please choose here where most of the filming will take place:</p>
+
+  <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Country*</ion-label>
+        <ion-select [(ngModel)]="PostData.country" name="country" (ionChange)="countryEvent($event)" class="myCustomSelect" interface="action-sheet" [disabled]="hasClick">
+          <ion-select-option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</ion-select-option>
+        </ion-select>
+        </ion-item>
+        </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">City*</ion-label>
+          <ion-select [(ngModel)]="PostData.city" name="city" class="myCustomSelect" interface="action-sheet" [disabled]="hasClick">
+            <ion-select-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+          </ion-select>
+          </ion-item>
+      </ion-col>
+      </ion-row>
+      <p class="page-label">Details of other filming locations:</p>
+      <ion-radio-group [(ngModel)]="filmingLocationsDetails">
+      <ion-row>
+        <ion-col size="1" no-padding>
+          <ion-radio mode="md" value="No additional filming locations"></ion-radio>
+        </ion-col>
+        <ion-col size="11" no-padding>
+          No additional filming locations
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1" no-padding>
+          <ion-radio mode="md" value="Another city in the same country"></ion-radio>
+        </ion-col>
+        <ion-col size="11" no-padding>
+          Another city in the same country
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1" no-padding>
+          <ion-radio mode="md" value="A different country"></ion-radio>
+        </ion-col>
+        <ion-col size="11" no-padding>
+          A different country
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1" no-padding>
+          <ion-radio mode="md" value="More than 10 filming locations"></ion-radio>
+        </ion-col>
+        <ion-col size="11" no-padding>
+          More than 10 filming locations
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+
+    <p class="page-label mt-2">Select expected start and end dates of the filming:</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Start Date</ion-label>
+  <ion-input
+    id="start_date"
+    value="{{ PostData.start_date | date: 'dd MMM yyyy' }}"
+    [(ngModel)]="PostData.start_date"
+    displayFormat="DD MMM YYYY"
+    [disabled]="hasClick">
+</ion-input>
+</ion-item>
+
+<ion-popover trigger="start_date" (ionPopoverDidDismiss)="popoverDismissed()">
+    <ng-template>
+        <ion-datetime
+            presentation="date"
+            [(ngModel)]="PostData.start_date"
+            displayFormat="DD MMM YYYY"
+            locale="en-US"
+            (ionChange)="handlestart_dateChange($event)">
+        </ion-datetime>
+    </ng-template>
+</ion-popover>
+
+        </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">End Date</ion-label>
+        <ion-input
+        id="end_date"
+        value="{{ PostData.end_date | date: 'dd MMM yyyy' }}"
+        [(ngModel)]="PostData.end_date"
+        displayFormat="DD MMM YYYY"
+        [disabled]="hasClick">
+        </ion-input>
+        </ion-item>
+
+        <ion-popover trigger="end_date">
+            <ng-template>
+                <ion-datetime
+                    presentation="date"
+                    [(ngModel)]="PostData.end_date"
+                    displayFormat="DD MMM YYYY"
+                    locale="en-US"
+                    (ionChange)="handleend_dateChange($event)">
+                </ion-datetime>
+            </ng-template>
+        </ion-popover>
+      </ion-col>
+      </ion-row>
+  <!-- <ion-button color="primary" (click)="goToPreviousStep()">Previous</ion-button>
+  <ion-button color="primary" (click)="goToNextStep()">Next</ion-button> -->
+</div>
+
+<div *ngIf="currentStep === 4">
+  <p class="page-label">Output: (I would like to receive the filming files in the below format)</p>
+  <ion-row *ngFor="let option of outputFormatOptions">
+    <ion-col size="1" no-padding>
+      <ion-checkbox [(ngModel)]="option.selected" (ionChange)="updateFilmingFormatSelection(option)"></ion-checkbox>
+    </ion-col>
+    <ion-col size="11" no-padding>
+      {{ option.label }}
+    </ion-col>
+  </ion-row>
+  <p class="page-label">Please share additional, relevant and important details we should know:</p>
+  <ion-item>
+    <ion-label position="floating">More details</ion-label>
+  <ion-textarea
+    (input)="adjustTextarea($event)"
+    class="auto-resize-textarea"
+    rows="4"
+    name="details"
+    [(ngModel)]="PostData.details"
+    [disabled]="hasClick">
+  </ion-textarea>
+  </ion-item>
+  <!-- <ion-button color="primary" (click)="goToPreviousStep()">Previous</ion-button>
+  <ion-button color="primary" (click)="goToNextStep()">Next</ion-button> -->
+</div>
+
+
+<div *ngIf="currentStep === 5">
+  <p class="page-label">Personal details</p>
+  <ion-item>
+    <ion-label position="floating">First Name*</ion-label>
+      <ion-input class="mt-2" [(ngModel)]="PostData.first_name" name="first_name" [disabled]="hasClick"></ion-input>
+      </ion-item>
+      <!-- </ion-col>
+    <ion-col size="6" no-padding> -->
+    <ion-item>
+      <ion-label position="floating">Last Name*</ion-label>
+      <ion-input class="mt-2" [(ngModel)]="PostData.last_name" name="last_name" [disabled]="hasClick"></ion-input>
+      </ion-item>
+    <!-- </ion-col>
+  </ion-row> -->
+  <ion-item>
+    <ion-label position="floating">Email Address*</ion-label>
+  <ion-input class="mt-2" type="email"  [(ngModel)]="PostData.email" name="email" [disabled]="hasClick"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Mobile Number*</ion-label>
+  <ion-input class="mt-2" type="tel"  [(ngModel)]="PostData.phone_number" name="phone_number" [disabled]="hasClick"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Your Company</ion-label>
+  <ion-input class="mt-2" [(ngModel)]="PostData.company" name="company" [disabled]="hasClick"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Your Role in the Company</ion-label>
+  <ion-input class="mt-2" [(ngModel)]="PostData.company_designation" name="company_designation" [disabled]="hasClick"></ion-input>
+  </ion-item>
+  <!-- <ion-button color="primary" (click)="goToPreviousStep()">Previous</ion-button>
+  <ion-button color="primary" (click)="submitRegistration()">Submit</ion-button> -->
+</div>
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+        <ion-col size="4" no-padding>
+          <ion-button color="primary" expand="block" size="medium" fill="outline" (click)="goToPreviousStep()">
+            <ion-icon name="chevron-back"></ion-icon> Previous
+          </ion-button>
+        </ion-col>
+        <ion-col size="5" no-padding *ngIf="currentStep < 5">
+
+        </ion-col>
+        <ion-col size="3" no-padding *ngIf="currentStep < 5">
+          <ion-button color="primary" expand="block" size="medium" fill="outline" (click)="goToNextStep()">
+            Next <ion-icon name="chevron-forward" class="icon-item"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="8" no-padding *ngIf="currentStep === 5">
+          <ion-button color="primary" expand="block" size="medium" (click)="ActionSubmit()" *ngIf="!hasClick">
+            Submit <ion-icon name="chevron-forward" class="icon-item"></ion-icon>
+          </ion-button>
+          <ion-button mode="ios" expand="block" color="primary" size="medium" type="button" *ngIf="hasClick">
+            <ion-spinner name="crescent"></ion-spinner>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+</ion-footer>

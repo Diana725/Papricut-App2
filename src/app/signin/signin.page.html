@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main_content_div">
+
+       <div class="header_flex">
+        <img src="assets/imgs/logo.png" class="logo">
+      </div>
+
+      <ion-label class="bold_lbl">Welcome!</ion-label>
+
+      <ion-label class="small_lbl">Sign in to your account</ion-label>
+
+      <form [formGroup]="itemForm" (ngSubmit)="ActionLogin()">
+
+      <ion-item>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input class="center-label" formControlName="email" type="text" [disabled]="hasClick"></ion-input>
+      </ion-item>
+
+      <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input class="center-label" type="password" formControlName="password" [disabled]="hasClick"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" expand="block" *ngIf="!hasClick">
+        SIGN IN
+      </ion-button>
+      <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+
+    </form>
+
+    <p class="forgot_lbl" (click)="forgotPass()">Forgot password?</p>
+
+    <!-- <h5 class="ion-text-center text-center">
+      New here? Sign up below;
+    </h5>
+
+      <ion-button fill="outline" expand="block" color="primary" (click)="openRegister()">
+        SIGN UP
+      </ion-button> -->
+
+  </div>
+
+</ion-content>

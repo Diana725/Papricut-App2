@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="main_content_div">
+
+       <div class="header_flex">
+        <img src="assets/imgs/Papricut logo (Name only) white.png" class="logo">
+      </div>
+
+      <ion-label class="bold_lbl">Book a videographer<br>anywhere in the world!</ion-label>
+
+      <ion-row class="mt-4 justify-content-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button color="secondary" shape="round" (click)="openBooking()">
+            <ion-text class="ion-text-bold book-now">BOOK NOW</ion-text>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+-->
+      <!-- <p class="ion-text-center text-center or-text">
+        OR
+      </p> -->
+
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-row class="footer-row justify-content-between">
+    <ion-col size="3" class="ion-text-start">
+      <ion-button class="footer-text-btn" fill="clear" expand="block" color="light" (click)="openRegister()">
+        Register
+      </ion-button>
+    </ion-col>
+    <ion-col size="6"></ion-col>
+    <ion-col size="3" class="ion-text-end">
+      <ion-button class="footer-text-btn" fill="clear" expand="block" color="light" (click)="openLogin()">
+        Sign In
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,8 @@
+{
+  "name": "Papricut",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

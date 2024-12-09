@@ -1,0 +1,74 @@
+// ion-content {
+//     --background: #fff url('../../assets/imgs/6.jpg') no-repeat center center / cover;
+// }
+.main_content_div {
+    width: 100%;
+    padding: 16px;
+
+    ion-label {
+        display: block;
+    }
+
+    .header_flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+        ion-button {
+            margin: 0px;
+            color: var(--ion-color-dark);
+        }
+    }
+
+    .bold_lbl {
+        font-size: 26px;
+        text-align: center;
+        color: var(--ion-color-dark);
+    }
+
+    .small_lbl {
+        text-align: center;
+        color: var(--ion-color-dark);
+        font-size: 14px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+
+    ion-button {
+        margin: 0px;
+        --border-radius: 5px;
+        height: 50px;
+        // margin-bottom: 40px;
+    }
+
+    .forgot_lbl {
+        color: var(--ion-color-primary);
+        // font-size: 14px;
+        // text-align: center;
+    }
+
+    // .abs_lbl {
+    //     position: absolute;
+    //     bottom: 40px;
+    //     color: var(--ion-color-dark);
+    //     font-size: 14px;
+    //     text-align: center;
+    //     left: 50%;
+    //     transform: translate(-50%);
+    //     width: 100%;
+    // }
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    width: 40%;
+    margin-top: 15%;
+}
+
+.center-label {
+  display: flex;
+  align-items: center;
+}

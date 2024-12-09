@@ -1,0 +1,198 @@
+ion-content {
+  // min-height: 100vh;
+  --background: var(--ion-color-primary) url('../../assets/imgs/mobile.png') no-repeat center center / cover;
+  background-position: center bottom; 
+}
+
+
+.main_content_div {
+    width: 100%;
+    padding: 10px;
+
+    ion-label {
+        display: block;
+    }
+
+    .header_flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // margin-top: 49 px;
+        margin-bottom: 35px;
+
+        ion-button {
+            margin: 0px;
+            color: var(--ion-color-dark);
+        }
+    }
+
+    .or-text {
+      margin-top: -6% !important;
+      color: var(--ion-color-light);
+    }
+
+    .bold_lbl {
+        font-size: 30px;
+        text-align: center;
+        color: var(--ion-color-light);
+        // width:  212px;
+        // height:  52px;
+        font-family: 'Proxima Nova', sans-serif;
+        margin-bottom: 60px;
+    }
+
+    .small_lbl {
+        text-align: center;
+        color: var(--ion-color-dark);
+        font-size: 14px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+
+    ion-input {
+        // background: rgb(148, 137, 145, 0.3);
+        border-radius: 5px;
+        margin-bottom: 20px;
+        height: 50px;
+        --padding-start: 8px;
+        color: var(--ion-color-dark);
+
+        ion-icon {
+            margin-left: 10px;
+            color: var(--ion-color-dark);
+        }
+    }
+
+    .book-now{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0;
+      padding-bottom: 8px;
+      margin-bottom: 40px;
+      margin-top: 50px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    ion-button {
+        margin: 0px;
+        --border-radius: 5px;
+        height: 20px;
+        width: 140px;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    .forgot_lbl {
+        color: var(--ion-color-dark);
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .abs_lbl {
+        position: absolute;
+        bottom: 40px;
+        color: var(--ion-color-dark);
+        font-size: 14px;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%);
+        width: 100%;
+    }
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    width: 260px;
+    height: 75px;
+    margin-top: 35%;
+    object-fit: cover;
+}
+
+.center-label {
+  display: flex;
+  align-items: center;
+}
+
+.mt-4 {
+  margin-top: 6% !important;
+}
+
+.footer-row {
+  background: var(--ion-color-secondary);
+  display: flex; /* Flexbox for layout */
+  align-items: center; /* Vertically centers content */
+  justify-content: space-between; /* Distributes buttons evenly */
+  height: 100%; /* Matches footer height */
+  margin: 0; /* Removes extra spacing */
+  padding-bottom: 20px;
+}
+
+.footer-text-btn {
+  text-transform: none !important;
+}
+ion-text {
+  font-size: 17px;
+}
+ion-row {
+  // padding: 0 !important;
+  max-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+ion-footer {
+  position: relative; /* Ensure it stays in the flow */
+  height: 50px; /* Desired footer height */
+  // display: flex;
+  // align-items: center;
+  padding: 0; /* Remove default padding */
+}
+ion-button.footer-text-btn {
+  position: static; /* Keep in flow */
+  font-size: 14px; /* Adjust text size */
+  max-height: auto; /* Allow height to fit content */
+  line-height: 1; /* Remove extra height from line spacing */
+  // margin-top: -3px;
+  padding-top: 0;
+}
+
+ion-col {
+  margin: 0;
+  padding: 0;
+}
+
+// .custom-action-sheet {
+//   --background: #d1378c;
+//   --ion-text-color: #fff;
+// }
+//
+// .custom-action-sheet .action-sheet-wrapper {
+//   background: none;
+//   box-shadow: none;
+// }
+//
+// .custom-action-sheet .action-sheet-container {
+//   background: transparent;
+//   border-radius: 10px 10px 0 0;
+// }
+//
+// .custom-action-sheet .action-sheet-header {
+//   background: transparent;
+//   color: #fff;
+//   border-bottom: none;
+// }
+//
+// .custom-action-sheet .action-sheet-title {
+//   color: #fff;
+// }
+//
+// .custom-action-sheet .action-sheet-button {
+//   color: #fff;
+// }
+//
+// .custom-action-sheet .action-sheet-button:hover {
+//   --background: rgba(255, 255, 255, 0.1);
+// }

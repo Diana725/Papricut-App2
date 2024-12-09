@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Bookings
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="filters()">
+        <ion-icon name="filter-outline" color="light" class="top-right-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-segment [value]="status" (ionChange)="segmentChanged($event)" mode="ios" class="custom-segment">
+<ion-segment-button value="">
+  <ion-label>All</ion-label>
+</ion-segment-button>
+<ion-segment-button value="1">
+  <ion-label>Active</ion-label>
+</ion-segment-button>
+<ion-segment-button value="3">
+  <ion-label>Completed</ion-label>
+</ion-segment-button>
+</ion-segment>
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+  <ion-card *ngIf="nodataavailable" color="secondary">
+    <ion-card-content>
+      There are no bookings to display!
+    </ion-card-content>
+    </ion-card>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="..fetching">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item *ngFor="let item of list" (click)="booking($event,item)">
+    <div class="main-list">
+      <div>
+        <h5 class="h2-list" *ngIf="rights_group == '3'">{{item.client_name}}</h5>
+        <h5 class="h2-list" *ngIf="rights_group == '4'">{{item.photographer}}</h5>
+        <p class="p-list"><strong>Date:</strong> {{item.eventDate}}</p>
+        <p class="p-list"><strong>Shoot Nature:</strong> {{item.shoot_nature}}</p>
+        <p class="p-list"><strong>Location:</strong> {{item.location}}</p>
+        <p class="p-list"><ion-badge>{{item.bookingProgress}}</ion-badge></p>
+      </div>
+    </div>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+</ion-content>
+<ion-footer>
+  <app-bottomtabs [pageName]="pageName"></app-bottomtabs>
+</ion-footer>

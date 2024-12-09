@@ -1,0 +1,49 @@
+.auto-resize-textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+/* Add this CSS to your component's SCSS file */
+.step-progress {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.step-indicator {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #4c5494;
+  // border: 1px solid skyBlue;
+  box-shadow: inset 3px 3px 5px rgba(0,0,0,.1), 3px 3px 5px rgba(0,0,0,.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-indicator.active {
+  background-color: var(--ion-color-secondary); /* Active step color */
+  color: #fff;
+}
+
+.step-indicator-text {
+  margin-top: -20% !important;
+}
+
+.step-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #4c5494; /* Color of the line */
+  margin: 14px 0; /* Adjust the vertical position of the line */
+}
+
+.icon-item {
+  font-size: 4vw;
+}
+
+.page-label {
+  font-weight: bold;
+}

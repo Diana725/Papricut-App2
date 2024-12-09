@@ -1,0 +1,66 @@
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  color: var(--ion-color-dark);
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: var(--ion-color-dark);
+  cursor: inherit;
+  display: block;
+}
+
+.profile-header{
+  // border-radius: 6px;
+  // background-position: center center;
+  // background-size: cover;
+    // background: color($colors,primary);
+    // padding: 20px 0;
+    // height: 240px;
+    .profile-img{
+        position: relative;
+        min-width: 80px;
+        max-width: 80px;
+        width: 80px;
+        margin: 0 auto;
+        img{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ddd;
+        }
+        .upload-img{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            // background: var(--ion-color-secondary);
+            position: absolute;
+            bottom: 5px;
+            right: 0px;
+            font-size: 11px;
+            text-align: center;
+            ion-icon{
+                line-height: inherit;
+                font-size: 20px;
+            }
+        }
+    }
+
+}
+
+.auto-resize-textarea {
+  resize: none;
+  overflow: hidden;
+}

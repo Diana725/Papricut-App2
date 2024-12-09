@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Status Questions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="..fetching">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form (submit)="postQuestion()">
+
+  <ion-textarea
+    (input)="adjustTextarea($event)"
+    class="auto-resize-textarea mt-4"
+    placeholder="Enter your question"
+    fill="outline"
+    rows="2"
+    name="question"
+    [(ngModel)]="PostData.question"
+    [disabled]="hasClick">
+  </ion-textarea>
+
+  <ion-button class="mt-4" mode="ios" type="submit" expand="block" color="primary" *ngIf="!hasClick">Post</ion-button>
+  <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+
+  </form>
+
+  <hr>
+
+  <ion-card *ngIf="nodataavailable" color="secondary">
+    <ion-card-content>
+      There are no quetions to display!
+    </ion-card-content>
+    </ion-card>
+
+    <app-list-card *ngFor="let item of list" [item]="item" (remove)="removeItem($event)"></app-list-card>
+
+    <!-- Infinite Scroll -->
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more questions..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+
+
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+    <ion-item (click)="community()">
+      <div class="main-list">
+        <div>
+          <h5 class="h2-list">Status Questions</h5>
+          <p class="p-list">Update your status</p>
+        </div>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="profile()">
+      <div class="main-list">
+        <div>
+          <h5 class="h2-list">Edit Profile</h5>
+          <p class="p-list">Update your personal details</p>
+        </div>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="changepassword()">
+      <div class="main-list">
+        <div>
+          <h5 class="h2-list">Change Password</h5>
+          <p class="p-list">Secure your account</p>
+        </div>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="logout()">
+      <div class="main-list">
+        <div>
+          <h5 class="h2-list">Logout</h5>
+          <p class="p-list">Logout of your account</p>
+        </div>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="deleteAccount()">
+      <span slot="end">v {{currentVersion}}</span>
+      <div class="main-list">
+        <div>
+          <h5 class="h2-list">Delete Account</h5>
+          <p class="p-list">Delete your account and all records</p>
+        </div>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+</ion-content>

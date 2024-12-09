@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Country Select</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerm" placeholder="Search Country"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let country of filteredCountries" (click)="selectCountry(country)">
+      {{ country.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

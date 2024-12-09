@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register as {{accountType}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <div class="main_content_div"> -->
+
+    <!-- <div class="header_flex">
+      <ion-button (click)="goToBack()" size="small" fill="clear">
+        <ion-icon name="chevron-back"></ion-icon>
+        Back
+      </ion-button>
+   </div> -->
+
+   <!-- <ion-label class="bold_lbl">Create Account</ion-label> -->
+      <p>Fill in your details to continue!</p>
+
+      <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+      <form  (ngSubmit)="ActionSubmit()">
+
+        <ion-row>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">First Name*</ion-label>
+              <ion-input [(ngModel)]="RegisterData.first_name" name="first_name" [disabled]="hasClick"></ion-input>
+              </ion-item>
+              </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">Last Name*</ion-label>
+                <ion-input [(ngModel)]="RegisterData.last_name" name="last_name" [disabled]="hasClick"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Email Address*</ion-label>
+                <ion-input class="center-label" type="email" [(ngModel)]="RegisterData.email" name="email" [disabled]="hasClick"></ion-input>
+              </ion-item>
+            </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label position="floating">Country*</ion-label>
+                  <ion-select [(ngModel)]="RegisterData.countryId" name="countryId" (ionChange)="countryEvent($event);" interface="action-sheet" class="myCustomSelect" [disabled]="hasClick">
+                    <ion-select-option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</ion-select-option>
+                  </ion-select>
+                  </ion-item>
+                  </ion-col>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label position="floating">City*</ion-label>
+                    <ion-select [(ngModel)]="RegisterData.cityId"  name="cityId" interface="action-sheet" class="myCustomSelect" [disabled]="hasClick">
+                      <ion-select-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+                    </ion-select>
+                    </ion-item>
+                </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="6">
+                      <ion-item>
+                        <ion-label position="floating">Mobile No.</ion-label>
+                      <ion-input type="tel"  [(ngModel)]="RegisterData.phone_number" name="phone_number" [disabled]="hasClick"></ion-input>
+                      </ion-item>
+                      </ion-col>
+                    <ion-col size="6">
+                      <ion-item>
+                        <ion-label position="floating">WhatsApp No.*</ion-label>
+                        <ion-input type="tel"  [(ngModel)]="RegisterData.whatsapp_number" name="whatsapp_number" [disabled]="hasClick"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="12">
+                          <ion-item>
+                            <ion-label position="floating">Password*</ion-label>
+                          <ion-input type="password"  [(ngModel)]="RegisterData.password" name="password" [disabled]="hasClick"></ion-input>
+                          </ion-item>
+                          </ion-col>
+                        <ion-col size="12">
+                          <ion-item>
+                            <ion-label position="floating">Confirm Password*</ion-label>
+                            <ion-input type="password"  [(ngModel)]="RegisterData.password_confirmation" name="password_confirmation" [disabled]="hasClick"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="12" *ngIf="accountType == 'Photographer'">
+                          <ion-item>
+                            <ion-label position="floating">Bio</ion-label>
+                          <ion-textarea
+                            (input)="adjustTextarea($event)"
+                            class="auto-resize-textarea"
+                            rows="3"
+                            name="bio"
+                            [(ngModel)]="RegisterData.bio"
+                            [disabled]="hasClick">
+                          </ion-textarea>
+                          </ion-item>
+                          </ion-col>
+                        </ion-row>
+
+                        <ion-row class="mt-2" *ngIf="accountType == 'Photographer'">
+                            <ion-col size="6">
+                              <ion-item>
+                                <ion-label position="floating">Category</ion-label>
+                              <ion-select [(ngModel)]="RegisterData.categoryId"  name="categoryId" class="myCustomSelect" interface="action-sheet" [disabled]="hasClick">
+                                <ion-select-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</ion-select-option>
+                              </ion-select>
+                              </ion-item>
+                              </ion-col>
+                            <ion-col size="6">
+
+                              <ion-row *ngIf="photo && photo !=null">
+                                <ion-col size="12" style="padding:2px;">
+                                  <div class="profile-img" text-center>
+                                  <img class="photo-img array-img" [src]="photo">
+                                  <span class="upload-img-top">
+                                    <ion-icon color="danger" name="close-circle" class="cameraIcon-remove" (click)="delete_IMAGE()"></ion-icon>
+                                  </span>
+                                  </div>
+                                </ion-col>
+                              </ion-row>
+
+                            <ion-button (click)="takePicture()" color="dark" expand="block" fill="outline"><ion-icon slot="start" name="image-outline" aria-hidden="true"></ion-icon> <span class="transform-none-case">Profile Image</span></ion-button>
+
+                            </ion-col>
+                            </ion-row>
+
+        <p class="forgot_lbl" text-center>
+            By creating an account you agree to our <span (click)="terms()" class="primary-color"><strong>Terms of Use</strong></span>
+             and <span (click)="privacy()" class="primary-color"><strong>Privacy Policy</strong></span>
+          </p>
+
+      <ion-button mode="ios" type="submit" expand="block" *ngIf="!hasClick">
+        Sign Up
+      </ion-button>
+      <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+
+    </form>
+
+      <!-- <ion-label class="abs_lbl" (click)="openSignin()">You already have an account ? Sign In Now</ion-label> -->
+
+  <!-- </div> -->
+</ion-content>

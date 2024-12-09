@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Question</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form (submit)="postQuestion()">
+
+  <!-- <p>Enter your question</p> -->
+  <ion-textarea
+  #descriptionTextarea
+    (input)="adjustTextarea($event)"
+    class="auto-resize-textarea mt-2"
+    fill="outline"
+    rows="4"
+    name="question"
+    [(ngModel)]="PostData.question"
+    [disabled]="hasClick">
+  </ion-textarea>
+
+  <ion-button class="mt-4" mode="ios" type="submit" expand="block" color="primary" *ngIf="!hasClick">Save</ion-button>
+  <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+
+  </form>
+
+</ion-content>

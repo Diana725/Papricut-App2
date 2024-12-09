@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-spinner class="custom-spinner-center" *ngIf="apiLoader"></ion-spinner>
+
+    <form (submit)="updateProfile()">
+
+                <ion-grid>
+                <ion-row>
+                <ion-col size="3">
+                  <div class="profile-header">
+                    <div class="profile-img" text-center (click)="takePicture()">
+                      <img [src]="profilePic">
+                      <span class="upload-img"><ion-icon color="dark" name="camera"></ion-icon></span>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col size="1"></ion-col>
+                <ion-col size="8">
+                  <ion-input label="Mobile Number" label-placement="floating" fill="outline" type="tel" value="{{phone_number}}" [(ngModel)]="ProfileData.phone_number" name="phone_number" [disabled]="hasClick"></ion-input>
+                </ion-col>
+                </ion-row>
+                </ion-grid>
+
+                <!-- <ion-grid>
+                    <ion-row>
+                      <ion-col size="6"> -->
+
+                            <ion-input class="mt-4" [(ngModel)]="ProfileData.first_name" name="first_name" label="First Name" label-placement="floating" fill="outline" [disabled]="hasClick"></ion-input>
+
+                      <!-- </ion-col>
+                      <ion-col size="6"> -->
+
+                            <ion-input class="mt-4" [(ngModel)]="ProfileData.last_name" name="last_name" label="Last Name" label-placement="floating" fill="outline" [disabled]="hasClick"></ion-input>
+
+                      <!-- </ion-col>
+                      </ion-row>
+                    </ion-grid> -->
+
+
+                          <ion-select label="Country" label-placement="floating" fill="outline" [(ngModel)]="ProfileData.country_id"  name="country_id" (ionChange)="countryEvent($event)" class="myCustomSelect mt-4" interface="action-sheet" [disabled]="hasClick">
+                            <ion-select-option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</ion-select-option>
+                          </ion-select>
+
+                            <ion-select label="City" label-placement="floating" fill="outline" [(ngModel)]="ProfileData.city_id"  name="city_id" class="myCustomSelect mt-4" interface="action-sheet" [disabled]="hasClick">
+                              <ion-select-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+                            </ion-select>
+
+
+                        <ion-select label="Category" label-placement="floating" fill="outline" [(ngModel)]="ProfileData.category"  name="category" (ionChange)="countryEvent($event)" class="myCustomSelect mt-4" interface="action-sheet" [disabled]="hasClick">
+                          <ion-select-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</ion-select-option>
+                        </ion-select>
+
+                <ion-input class="mt-4" label="Email Address" label-placement="floating" fill="outline" type="email" value="{{email}}" [(ngModel)]="ProfileData.email" name="email" [disabled]="hasClick"></ion-input>
+
+                <ion-textarea
+                #descriptionTextarea
+                  (input)="adjustTextarea($event)"
+                  class="auto-resize-textarea mt-4"
+                  label="Bio"
+                  label-placement="floating"
+                  fill="outline"
+                  rows="4"
+                  name="bio"
+                  [(ngModel)]="ProfileData.bio"
+                  [disabled]="hasClick">
+                </ion-textarea>
+
+                  <ion-button class="mt-4" mode="ios" type="submit" expand="block" color="primary" *ngIf="!hasClick">Save Changes</ion-button>
+                  <ion-button mode="ios" expand="block" color="primary" type="button" *ngIf="hasClick"><ion-spinner name="crescent"></ion-spinner></ion-button>
+              <!-- </div>
+
+      </div> -->
+      </form>
+
+</ion-content>
