@@ -32,7 +32,7 @@ ion-content {
     }
 
     .bold_lbl {
-        font-size: 25px;
+        font-size: 26px;
         text-align: center;
         color: var(--ion-color-light);
         // width:  212px;
@@ -67,8 +67,8 @@ ion-content {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 17px;
+      font-weight: bolder;
     }
 
     ion-button {
@@ -108,9 +108,9 @@ ion-content {
 .logo {
     display: block;
     margin: auto;
-    width: 300px;  /* Changed from 260px to match image */
-    height: 50px; /* Changed from 75px to match image */
-    margin-top: 40%;
+    width: 330px;  /* Changed from 260px to match image */
+    height: 60px; /* Changed from 75px to match image */
+    margin-top: 35%;
     margin-bottom: 40px;
     object-fit: contain; /* Changed from cover to maintain aspect ratio */
 }
